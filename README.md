@@ -115,7 +115,7 @@ $ /etc/init.d/nginx restart
 
 ### 更多
 
-可以看看 [项目整体介绍](https://www.yuque.com/lzan13/fn003n/ypa51f)
+总体介绍 [忘忧大陆项目整体介绍](https://www.yuque.com/lzan13/nepenthe/ypa51f)
 
 **项目客户端下载体验**
 
