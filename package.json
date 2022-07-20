@@ -1,38 +1,37 @@
 {
-  "name": "vmtemplateadmin",
-  "version": "0.1.0",
+  "name": "vmnepentheadmin",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^3.0.0"
+    "@element-plus/icons-vue": "^2.0.1",
+    "axios": "^0.27.2",
+    "echarts": "^5.2.2",
+    "element-plus": "^2.2.2",
+    "mitt": "^3.0.0",
+    "nprogress": "^0.2.0",
+    "vue": "^3.2.18",
+    "vue-class-component": "^8.0.0-rc.1",
+    "vue-i18n": "^9.1.10",
+    "vue-router": "^4.0.11",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0-0"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
+    "@types/node": "^17.0.38",
+    "@types/nprogress": "^0.2.0",
+    "@vitejs/plugin-vue": "^2.3.1",
+    "sass": "^1.27.0",
+    "sass-loader": "^13.0.0",
+    "typescript": "~4.7.2",
+    "unplugin-auto-import": "^0.8.6",
+    "unplugin-vue-components": "^0.19.6",
+    "vite": "^2.9.7",
+    "vite-plugin-html": "^3.2.0",
+    "vue-tsc": "^0.35.2"
   },
   "browserslist": [
     "> 1%",
