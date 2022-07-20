@@ -1,6 +1,6 @@
 # vmnepentheadmin
 
-项目使用 ts+vue3+element-plus+vite 进行开发
+使用 ts+vue3+element-plus+vite 进行开发的一套社交项目后台管理系统，具体使用及功能详情看下边介绍
 
 ### 界面效果
 
