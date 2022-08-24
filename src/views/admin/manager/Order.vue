@@ -109,7 +109,7 @@
 import { onMounted, reactive, getCurrentInstance } from "vue"
 import { Plus, Edit, Delete } from "@element-plus/icons-vue"
 import { useI18n } from "vue-i18n"
-import { addOrder, updateOrder, delOrder, order } from "@/api/order"
+import { addOrder, updateOrder, delOrder, order } from "@/network/api/order"
 import { formatDate } from "@/utils/vdate"
 import { Data, wrapOrder } from "@/utils/vdata"
 

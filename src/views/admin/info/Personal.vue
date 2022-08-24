@@ -128,7 +128,7 @@ import { formatAxis } from "@/utils/vdate"
 import { Session } from "@/utils/vstorage"
 import { wrapUrl } from "@/utils/vstr"
 
-import { sendCodeEmail, updateInfo, updatePassword } from "@/api/sign"
+import { sendCodeEmail, updateInfo, updatePassword } from "@/network/api/sign"
 
 const { proxy } = getCurrentInstance() as any
 const { t } = useI18n()

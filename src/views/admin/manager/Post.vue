@@ -116,7 +116,7 @@
 import { onMounted, reactive, getCurrentInstance } from "vue"
 import { Plus, Edit, Delete } from "@element-plus/icons-vue"
 import { useI18n } from "vue-i18n"
-import { addPost, updatePost, delPost, post } from "@/api/post"
+import { addPost, updatePost, delPost, post } from "@/network/api/post"
 import { useStore } from "@/store/index"
 import { formatDate } from "@/utils/vdate"
 import { Data, wrapContentStatus } from "@/utils/vdata"

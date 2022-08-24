@@ -6,7 +6,7 @@ export function wrapUrl(path: string) {
     if (path.indexOf("http") != -1) {
         return path;
     } else {
-        return `https://data.nepenthe.vmloft.com${path}`;
+        return `${import.meta.env.vmViteMediaHost}${path}`;
     }
 }
 

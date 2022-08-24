@@ -43,7 +43,7 @@
 import { onMounted, reactive, getCurrentInstance } from "vue"
 import { Plus, Edit, Delete } from "@element-plus/icons-vue"
 import { useI18n } from "vue-i18n"
-import { delCode, code } from "@/api/code"
+import { delCode, code } from "@/network/api/code"
 import { formatDate } from "@/utils/vdate"
 
 import { ElMessage } from "element-plus"

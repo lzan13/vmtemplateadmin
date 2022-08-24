@@ -128,7 +128,7 @@ import { useI18n } from "vue-i18n"
 import * as echarts from "echarts"
 import { useStore } from "@/store/index"
 
-import { countData } from "@/api/dashboard"
+import { countData } from "@/network/api/dashboard"
 import { Data } from "@/utils/vdata"
 
 const { proxy } = getCurrentInstance() as any

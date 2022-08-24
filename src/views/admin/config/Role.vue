@@ -72,7 +72,7 @@
 import { getCurrentInstance, onMounted, reactive } from "vue"
 import { Plus, Edit, Delete } from "@element-plus/icons-vue"
 import { useI18n } from "vue-i18n"
-import { addRole, updateRole, delRole, role } from "@/api/role"
+import { addRole, updateRole, delRole, role } from "@/network/api/role"
 import { useStore } from "@/store/index"
 import { formatDate } from "@/utils/vdate"
 

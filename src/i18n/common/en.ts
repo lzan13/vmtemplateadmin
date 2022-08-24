@@ -133,7 +133,7 @@ export default {
     // 系统信息
     site: {
         siteName: "忘忧大陆",
-        siteIndexTitle: "忘忧大陆-修仙一样交友",
+        siteIndexTitle: "忘忧大陆-虚拟空间交朋友",
         siteAdminTitle: "忘忧大陆管理系统",
         siteDesc: "登录你的个人管理账户开始使用",
         copyright: "Copyright © 2021 VMLoft All Rights Reserved.",

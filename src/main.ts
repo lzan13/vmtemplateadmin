@@ -12,6 +12,7 @@ import mitt from "mitt";
 import { i18n } from "@/i18n/index"
 import router from "@/router/index"
 import { store, key } from "@/store/index"
+// import { initWSManager } from "@/network/socket/wsmanager"
 
 const app = createApp(App)
 
@@ -20,6 +21,9 @@ app.use(i18n)
 app.use(store, key)
 app.use(router)
 
+// initWSManager(app)
+
 app.config.globalProperties.vbus = mitt()
+
 
 app.mount("#app")

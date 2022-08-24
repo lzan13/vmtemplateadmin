@@ -156,7 +156,7 @@
 import { onMounted, reactive, getCurrentInstance } from "vue"
 import { Plus, Edit, Delete } from "@element-plus/icons-vue"
 import { useI18n } from "vue-i18n"
-import { addFeedback, updateFeedback, delFeedback, feedback } from "@/api/feedback"
+import { addFeedback, updateFeedback, delFeedback, feedback } from "@/network/api/feedback"
 import { formatDate } from "@/utils/vdate"
 import { Data, wrapFeedbackStatus, wrapFeedbackType } from "@/utils/vdata"
 

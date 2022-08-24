@@ -100,6 +100,13 @@
                     <el-tag size="small" type="warning" v-else>未认证</el-tag>
                 </template>
             </el-table-column>
+            <el-table-column label="禁言" prop="banned" width="144">
+                <template #default="scope">
+                    <el-tag size="small" type="danger" v-if="scope.row.banned == 1">禁言</el-tag>
+                    <el-tag size="small" type="success" v-else>未禁言</el-tag>
+                    <span v-if="scope.row.bannedDate">{{ wrapDate(scope.row.bannedDate) }}</span>
+                </template>
+            </el-table-column>
             <el-table-column label="更新时间" prop="updatedAt" width="144">
                 <template #default="scope">
                     <span>{{ wrapDate(scope.row.updatedAt) }}</span>
@@ -193,6 +200,18 @@
                     <el-input-number v-model="state.model.charmWeek" :min="0" :max="999999999" :step="99"
                         controls-position="right" />
                 </el-form-item>
+                <!-- 禁言状态 -->
+                <el-form-item label="禁言状态">
+                    <el-switch v-model="state.model.bannedStatus"></el-switch>
+                </el-form-item>
+                <el-form-item label="禁言时长">
+                    <el-input-number v-model="state.model.bannedTime" :min="300" :max="99999999" :step="100"
+                        controls-position="right" />
+                </el-form-item>
+                <el-form-item label="禁言理由">
+                    <el-input v-model="state.model.bannedReason" :min="300" :max="99999999" :step="100"
+                        controls-position="right" />
+                </el-form-item>
             </el-form>
             <template #footer>
                 <span class="dialog-footer">
@@ -209,7 +228,7 @@
 import { onMounted, reactive, getCurrentInstance } from "vue"
 import { Plus, Edit, Delete } from "@element-plus/icons-vue"
 import { useI18n } from "vue-i18n"
-import { addUser, updateUser, delUser, user } from "@/api/user"
+import { addUser, updateUser, delUser, user } from "@/network/api/user"
 import { formatDate } from "@/utils/vdate"
 import { useStore } from "@/store/index"
 import { Data, wrapGender } from "@/utils/vdata"
@@ -246,6 +265,10 @@ const state = reactive({
         charm: 0,
         charmMonth: 0,
         charmWeek: 0,
+        banned: 0,
+        bannedStatus: false,
+        bannedTime: 300,
+        bannedReason: "",
     },
     rules: {
         nickname: [
@@ -339,6 +362,10 @@ const editContent = (data) => {
         charm: data.charm,
         charmMonth: data.charmMonth,
         charmWeek: data.charmWeek,
+        banned: data.banned,
+        bannedStatus: data.banned == 1,
+        bannedTime: 300,
+        bannedReason: data.bannedReason,
     }
     state.editTitle = "编辑账户"
     state.isShowEditDialog = true
@@ -376,6 +403,7 @@ const submitSave = async () => {
     let result
     try {
         if (state.model.id) {
+            state.model.banned = state.model.bannedStatus ? 1 : 0
             result = await updateUser(state.model.id, state.model)
         } else {
             result = await addUser(state.model)
@@ -414,6 +442,10 @@ const resetSave = () => {
         charm: 0,
         charmMonth: 0,
         charmWeek: 0,
+        banned: 0,
+        bannedStatus: false,
+        bannedTime: 300,
+        bannedReason: "",
     }
 }
 </script>

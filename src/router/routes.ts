@@ -42,7 +42,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                     isHide: false,
                     isIframe: false,
                     isKeepAlive: true,
-                    auth: 700, // 权限级别
+                    auth: 600, // 权限级别
                     icon: "iconfont icon-index",
                 },
             }, {
@@ -56,7 +56,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                     isHide: false,
                     isIframe: false,
                     isKeepAlive: true,
-                    auth: 900, // 权限级别
+                    auth: 600, // 权限级别
                     icon: "iconfont icon-file",
                 },
                 children: [
@@ -71,7 +71,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "configSite",
@@ -84,7 +84,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 900, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "configProfession",
@@ -97,7 +97,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "configRole",
@@ -110,7 +110,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "configVersion",
@@ -123,7 +123,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 900, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     },
                 ],
@@ -138,7 +138,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                     isKeepAlive: true,
                     isAffix: false,
                     isIframe: false,
-                    auth: 900, // 权限级别
+                    auth: 600, // 权限级别
                     icon: "iconfont icon-control",
                 },
                 children: [
@@ -153,7 +153,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "managerAttachment",
@@ -166,7 +166,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "managerBlacklist",
@@ -179,7 +179,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "managerClock",
@@ -192,7 +192,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "managerCode",
@@ -205,7 +205,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "managerComment",
@@ -218,7 +218,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "managerCommodity",
@@ -231,7 +231,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "managerFeedback",
@@ -244,7 +244,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "managerGift",
@@ -257,7 +257,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "managerGiftRelation",
@@ -270,7 +270,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "managerLike",
@@ -283,7 +283,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "managerMatch",
@@ -296,7 +296,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "managerNotice",
@@ -309,7 +309,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "managerOrder",
@@ -322,7 +322,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "managerPost",
@@ -335,7 +335,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "managerRelation",
@@ -348,7 +348,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "managerRoom",
@@ -361,7 +361,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "managerScore",
@@ -374,7 +374,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     }, {
                         path: "managerUser",
@@ -387,7 +387,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                             isHide: false,
                             isIframe: false,
                             isKeepAlive: true,
-                            auth: 700, // 权限级别
+                            auth: 600, // 权限级别
                         },
                     },
                 ],
@@ -402,7 +402,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                     isKeepAlive: true,
                     isAffix: false,
                     isIframe: false,
-                    auth: 700, // 权限级别
+                    auth: 600, // 权限级别
                     icon: "iconfont icon-my",
                 },
             }, {
@@ -416,7 +416,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
                     isKeepAlive: true,
                     isAffix: false,
                     isIframe: false,
-                    auth: 700, // 权限级别
+                    auth: 600, // 权限级别
                     icon: "iconfont icon-settings",
                 },
             },

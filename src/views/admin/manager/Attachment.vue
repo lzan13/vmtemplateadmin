@@ -100,7 +100,7 @@
 import { onMounted, reactive, getCurrentInstance } from "vue"
 import { Plus, Edit, Delete } from "@element-plus/icons-vue"
 import { useI18n } from "vue-i18n"
-import { addAttachment, updateAttachment, delAttachment, attachment } from "@/api/attachment"
+import { addAttachment, updateAttachment, delAttachment, attachment } from "@/network/api/attachment"
 import { formatDate } from "@/utils/vdate"
 
 import { ElMessage } from "element-plus"

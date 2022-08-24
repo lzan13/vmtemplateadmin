@@ -1,5 +1,5 @@
 {
-  "name": "vmnepentheadmin",
+  "name": "vmtemplateadmin",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -14,6 +14,7 @@
     "element-plus": "^2.2.2",
     "mitt": "^3.0.0",
     "nprogress": "^0.2.0",
+    "socket.io-client": "2.5.0",
     "vue": "^3.2.18",
     "vue-class-component": "^8.0.0-rc.1",
     "vue-i18n": "^9.1.10",

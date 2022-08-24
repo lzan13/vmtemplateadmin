@@ -38,11 +38,12 @@
         </el-table>
 
         <!-- 新增与编辑对话框 -->
-        <el-dialog v-model="state.isShowEditDialog" :title="state.editTitle" :before-close="resetSave" width="30%">
+        <el-dialog v-model="state.isShowEditDialog" :title="state.isEdit ? '新增配置' : '编辑配置'" :before-close="resetSave"
+            width="30%">
             <el-form class="mr32" :model="state.model" :rules="state.rules" ref="formRef" label-width="96px"
                 label-position="right" size="small">
                 <el-form-item label="别名" prop="alias">
-                    <el-input v-model="state.model.alias" :disabled="state.model.id == ''"
+                    <el-input v-model="state.model.alias" :disabled="state.isEdit"
                         :placeholder="$t('str.tips.inputHint')"></el-input>
                 </el-form-item>
                 <el-form-item label="标题" prop="title">
@@ -72,7 +73,7 @@
 import { onMounted, reactive, computed, getCurrentInstance } from "vue"
 import { Plus, Edit, Delete } from "@element-plus/icons-vue"
 import { useI18n } from "vue-i18n"
-import { addConfig, updateConfig, delConfig, config } from "@/api/config"
+import { addConfig, updateConfig, delConfig, config } from "@/network/api/config"
 import { formatDate } from "@/utils/vdate"
 
 import { ElMessage } from "element-plus"
@@ -88,7 +89,7 @@ const state = reactive({
 
     showDelPopoverItem: "", // 当前显示的 popover 记录
     isShowEditDialog: false,
-    editTitle: "",
+    isEdit: false,
     model: {
         id: "",
         alias: "",
@@ -135,7 +136,7 @@ const handleCurrentChange = (value) => {
  * 新增
  */
 const addContent = () => {
-    state.editTitle = "新增配置"
+    state.isEdit = false
     state.isShowEditDialog = true
 }
 /**
@@ -180,7 +181,7 @@ const editContent = (data) => {
         desc: data.desc,
         content: data.content,
     }
-    state.editTitle = "编辑配置"
+    state.isEdit = true
     state.isShowEditDialog = true
 }
 

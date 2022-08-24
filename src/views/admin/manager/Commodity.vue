@@ -116,7 +116,7 @@
 import { onMounted, reactive, getCurrentInstance } from "vue"
 import { Plus, Edit, Delete } from "@element-plus/icons-vue"
 import { useI18n } from "vue-i18n"
-import { addCommodity, updateCommodity, delCommodity, commodity } from "@/api/commodity"
+import { addCommodity, updateCommodity, delCommodity, commodity } from "@/network/api/commodity"
 import { Data, wrapCommodityStatus, wrapCommodityType } from "@/utils/vdata"
 import { formatDate } from "@/utils/vdate"
 

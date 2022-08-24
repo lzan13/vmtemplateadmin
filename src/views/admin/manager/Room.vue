@@ -83,7 +83,7 @@
 import { onMounted, reactive, getCurrentInstance } from "vue"
 import { Plus, Edit, Delete } from "@element-plus/icons-vue"
 import { useI18n } from "vue-i18n"
-import { addRoom, updateRoom, delRoom, room } from "@/api/room"
+import { addRoom, updateRoom, delRoom, room } from "@/network/api/room"
 import { formatDate } from "@/utils/vdate"
 
 import { ElMessage } from "element-plus"

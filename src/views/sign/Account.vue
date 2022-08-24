@@ -31,7 +31,7 @@ import { loadRoutes } from "@/router/index"
 import { useStore } from "@/store/index"
 import { Session } from "@/utils/vstorage"
 import { formatAxis } from "@/utils/vdate"
-import { signIn } from "@/api/sign"
+import { signIn } from "@/network/api/sign"
 
 const signRef = ref()
 const { t } = useI18n()

@@ -17,6 +17,8 @@ interface ImportMetaEnv {
     readonly vmViteSSL: boolean
     readonly vmViteOpen: boolean
     readonly vmViteApiHost: string
+    readonly vmViteMediaHost: string
+    readonly vmViteWSHost: string
     readonly vmViteEnv: string
 }
 

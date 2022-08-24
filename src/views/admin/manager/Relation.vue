@@ -87,7 +87,7 @@
 import { onMounted, reactive, getCurrentInstance } from "vue"
 import { Plus, Edit, Delete } from "@element-plus/icons-vue"
 import { useI18n } from "vue-i18n"
-import { addRelation, updateRelation, delRelation, relation } from "@/api/relation"
+import { addRelation, updateRelation, delRelation, relation } from "@/network/api/relation"
 import { formatDate } from "@/utils/vdate"
 import { Data, wrapRelation } from "@/utils/vdata"
 

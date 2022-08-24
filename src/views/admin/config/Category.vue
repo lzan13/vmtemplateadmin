@@ -62,7 +62,7 @@
 import { onMounted, reactive, getCurrentInstance } from "vue"
 import { Plus, Edit, Delete } from "@element-plus/icons-vue"
 import { useI18n } from "vue-i18n"
-import { addCategory, updateCategory, delCategory, category } from "@/api/category"
+import { addCategory, updateCategory, delCategory, category } from "@/network/api/category"
 import { useStore } from "@/store/index"
 import { formatDate } from "@/utils/vdate"
 

@@ -75,7 +75,7 @@ import { useStore } from "@/store/index"
 import { useTitle } from "@/utils/vweb"
 import { Session, Local } from "@/utils/vstorage"
 import { wrapUrl } from "@/utils/vstr"
-import { signOut } from "@/api/sign"
+import { signOut } from "@/network/api/sign"
 
 import { ElMessageBox, ElMessage } from "element-plus"
 import MsgNotice from "./MsgNotice.vue"

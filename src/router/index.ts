@@ -122,7 +122,7 @@ export function setCacheTagRoutes() {
 export function hasAuth(route: any) {
     let user: any = store.state.infos.user;
     if (route.meta && route.meta.auth) {
-        return user.role.identity > route.meta.auth;
+        return user.role.identity >= route.meta.auth;
     } else {
         return true;
     }

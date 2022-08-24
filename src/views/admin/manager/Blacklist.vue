@@ -87,7 +87,7 @@
 import { onMounted, reactive, getCurrentInstance } from "vue"
 import { Plus, Edit, Delete } from "@element-plus/icons-vue"
 import { useI18n } from "vue-i18n"
-import { addBlacklist, updateBlacklist, delBlacklist, blacklist } from "@/api/blacklist"
+import { addBlacklist, updateBlacklist, delBlacklist, blacklist } from "@/network/api/blacklist"
 import { formatDate } from "@/utils/vdate"
 import { Data, wrapRelation } from "@/utils/vdata"
 

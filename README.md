@@ -1,4 +1,4 @@
-# vmnepentheadmin
+# vmtemplateadmin
 
 使用 ts+vue3+element-plus+vite 进行开发的一套社交项目后台管理系统，具体使用及功能详情看下边介绍
 
@@ -10,6 +10,8 @@
 
 ### 本地开发调试
 
+记得复制`config/.env.template`一份到 `confi/.env.development` 然后修改里边对应的值为开发配置
+
 ```shell
 # 安装依赖
 $ yarn install
@@ -18,24 +20,23 @@ $ yarn dev
 
 # 更新依赖
 $ yarn upgrade-interactive --latest
-
 ```
 
 ### 发布上线
 
-记得复制`config/.env`一份到 `confi/.env.production` 然后修改里边对应的值为线上配置
+记得复制`config/.env.template`一份到 `confi/.env.production` 然后修改里边对应的值为线上配置
 
-```
+```shell
 # 打包编译
 $ yarn build
 # 规则检查
 $ yarn lint
 # 打包发布代码
-$ tar -czvf ./vmnepentheadmin.tgz -C dist .
+$ tar -czvf ./vmtemplateadmin.tgz -C dist .
 # 将打包的代码上传到要发布的服务器上，解包
-$ scp vmnepentheadmin.tgz aly:/var/www/vmnepenthe/admin/; rm vmnepentheadmin.tgz
+$ scp vmtemplateadmin.tgz aly:/var/www/vmtemplate/admin/; rm vmtemplateadmin.tgz
 # 解压打包的资源
-$ tar -xzvf vmnepentheadmin.tgz .; rm vmnepentheadmin.tgz
+$ tar -xzvf vmtemplateadmin.tgz .; rm vmtemplateadmin.tgz
 # 重启 ngnix
 $ /etc/init.d/nginx restart
 ```
