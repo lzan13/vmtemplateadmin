@@ -23,6 +23,8 @@ pnpm-debug.log*
 *.sw?
 *.tgz
 
+/config/.env
+/config/.env.development
 /config/.env.production
 
 app-ads.txt
