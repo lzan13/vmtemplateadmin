@@ -27,8 +27,8 @@ export default ({ mode }) => {
         '/api': {
             target: process.env.vmViteApiHost, // 实际请求接口地址
             changeOrigin: true, // 是否跨域
-            secure: true, // 是否https接口
-            ws: true, // 是否代理 WebSockets
+            secure: Boolean(process.env.vmViteSSL), // 是否https接口
+            ws: false, // 是否代理 WebSockets
             rewrite: (path) => path.replace(/^\/api/, "")
         },
     }
@@ -88,8 +88,8 @@ export default ({ mode }) => {
         },
         server: {
             port: Number(process.env.vmVitePort) || 9527, // 端口号
-            https: Boolean(process.env.vmViteSSL), // 启用 TLS + HTTP/2
-            open: Boolean(process.env.vmViteOpen), // 在开发服务器启动时自动在浏览器中打开应用程序
+            https: Boolean(process.env.vmViteSSL), // 是否启用 TLS + HTTP/2
+            open: Boolean(process.env.vmViteOpen), // 是否在开发服务器启动时自动在浏览器中打开应用程序
             proxy
         },
         build: {
