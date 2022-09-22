@@ -3,6 +3,8 @@
         <div class="top-control">
             <!-- 新增 -->
             <!-- <el-button type="primary" :icon="Plus" round @click="addContent">{{$t("str.btn.add")}}</el-button> -->
+            <el-button type="danger" :icon="Delete" round @click="delMultiContent">{{ $t("str.btn.deleteMulti") }}
+            </el-button>
             <div class="flex-auto"></div>
             <!-- 分页导航 -->
             <div v-if="state.dataList && state.dataList.length">
@@ -11,7 +13,9 @@
                 </el-pagination>
             </div>
         </div>
-        <el-table class="mt16" :data="state.dataList" :border="true" stripe empty-text="暂无数据">
+        <el-table class="mt16" :data="state.dataList" :border="true" stripe empty-text="暂无数据"
+            @selection-change="handleSelectionChange">
+            <el-table-column label="" prop="" type="selection" width="44" />
             <el-table-column label="用户" prop="owner" min-width="144">
                 <template #default="scope">
                     <div v-if="scope.row.owner">
@@ -61,7 +65,7 @@
 import { onMounted, reactive, getCurrentInstance } from "vue"
 import { Plus, Edit, Delete } from "@element-plus/icons-vue"
 import { useI18n } from "vue-i18n"
-import { delScore, score } from "@/network/api/score"
+import { delScore, delScoreList, score } from "@/network/api/score"
 import { formatDate } from "@/utils/vdate"
 
 import { ElMessage } from "element-plus"
@@ -74,6 +78,8 @@ const state = reactive({
     total: 0,
     page: 1,
     limit: 20,
+    selectList: [], // 多选集合
+
 })
 // 页面加载时
 onMounted(() => {
@@ -113,6 +119,28 @@ const delContent = async (value) => {
     loadScore()
 }
 /**
+ * 批量删除
+ */
+const delMultiContent = async () => {
+    let ids = ""
+    state.selectList.forEach((post: any, index: Number) => {
+        if (index == 0) {
+            ids = post._id
+        } else {
+            ids = `${ids},${post._id}`
+        }
+    })
+    try {
+        const result = await delScoreList({ ids })
+    } catch (e) {
+        return
+    }
+    ElMessage.success(t("str.tips.delSuccess"))
+
+    // 重新拉取数据
+    loadScore()
+}
+/**
  *  获取签到列表
  */
 const loadScore = async () => {
@@ -126,6 +154,12 @@ const loadScore = async () => {
         state.total = result.data.totalCount
     } catch (e) { }
     state.loading = false
+}
+/**
+ * 选择集合改变
+ */
+const handleSelectionChange = (value) => {
+    state.selectList = value
 }
 </script>
 

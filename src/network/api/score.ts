@@ -15,6 +15,18 @@ export function delScore(id: string) {
     });
 }
 /**
+ *  批量删除
+ * @param params 要传的参数值
+ * @returns 返回接口数据
+ */
+export function delScoreList(params: object) {
+    return request({
+        method: "delete",
+        params,
+        url: `/api/v1/score`,
+    });
+}
+/**
  *  获取签到信息列表
  * @param params 要传的参数值
  * @returns 返回接口数据

@@ -27,6 +27,18 @@ export function delProfession(id: string) {
     });
 }
 /**
+ *  批量删除
+ * @param params 要传的参数值
+ * @returns 返回接口数据
+ */
+export function delProfessionList(params: object) {
+    return request({
+        method: "delete",
+        params,
+        url: `/api/v1/profession`,
+    });
+}
+/**
  *  更新职业信息
  * @param params 要传的参数值
  * @returns 返回接口数据

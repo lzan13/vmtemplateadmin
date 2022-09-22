@@ -27,6 +27,18 @@ export function delLike(id: string) {
     });
 }
 /**
+ *  批量删除
+ * @param params 要传的参数值
+ * @returns 返回接口数据
+ */
+export function delLikeList(params: object) {
+    return request({
+        method: "delete",
+        params,
+        url: `/api/v1/like`,
+    });
+}
+/**
  *  更新喜欢信息
  * @param params 要传的参数值
  * @returns 返回接口数据

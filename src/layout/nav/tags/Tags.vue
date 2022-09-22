@@ -142,7 +142,7 @@ const refreshCurrentTag = (name: string = "") => {
     } else {
         tagName = route.name
     }
-    proxy.vbus.emit("refreshCurrentTag", tagName)
+    proxy.$vbus.emit("refreshCurrentTag", tagName)
 }
 /**
  * 关闭当前 tag，如果是设置了固定的（isAffix），不可以关闭

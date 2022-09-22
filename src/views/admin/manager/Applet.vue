@@ -3,6 +3,8 @@
         <div class="top-control">
             <!-- 新增 -->
             <el-button type="primary" :icon="Plus" round @click="addContent">{{ $t("str.btn.add") }}</el-button>
+            <el-button type="danger" :icon="Delete" round @click="delMultiContent">{{ $t("str.btn.deleteMulti") }}
+            </el-button>
             <div class="flex-auto"></div>
             <!-- 分页导航 -->
             <div v-if="state.dataList && state.dataList.length">
@@ -11,14 +13,16 @@
                 </el-pagination>
             </div>
         </div>
-        <el-table class="mt16" :data="state.dataList" :border="true" stripe empty-text="暂无数据">
+        <el-table class="mt16" :data="state.dataList" :border="true" stripe empty-text="暂无数据"
+            @selection-change="handleSelectionChange">
+            <el-table-column label="" prop="" type="selection" width="44" />
             <el-table-column label="封面" width="96">
                 <template #default="scope">
                     <div class="item-media" v-if="scope.row.cover">
                         <!-- 封面 -->
-                        <el-image class="item-img-cover" fit="cover" :src="wrapUrl(scope.row.cover.path) + '!vt96'"
-                            :preview-src-list="[wrapUrl(scope.row.cover.path)]" :hide-on-click-modal="true" lazy
-                            v-if="wrapUrl(scope.row.cover.path)">
+                        <el-image class="item-img-cover" fit="cover" :src="wrapMediaUrl(scope.row.cover.path) + '!vt96'"
+                            :preview-src-list="[wrapMediaUrl(scope.row.cover.path)]" :hide-on-click-modal="true" lazy
+                            v-if="wrapMediaUrl(scope.row.cover.path)">
                         </el-image>
                     </div>
                 </template>
@@ -36,9 +40,18 @@
                     <el-tag type="success" size="small" v-else>免费</el-tag>
                 </template>
             </el-table-column>
+            <el-table-column label="状态" prop="status" min-width="64">
+                <template #default="scope">
+                    <el-tag size="small" type="info" v-if="scope.row.status == 0">{{ $t('str.applet.status.wait') }}
+                    </el-tag>
+                    <el-tag size="small" type="success" v-if="scope.row.status == 1">{{ $t('str.applet.status.sale') }}
+                    </el-tag>
+                </template>
+            </el-table-column>
             <el-table-column label="类型" prop="type" min-width="64">
                 <template #default="scope">
-                    <el-tag size="small" v-if="scope.row.type == 0">{{ $t('str.applet.type.h5') }}</el-tag>
+                    <el-tag size="small" type="success" v-if="scope.row.type == 0">{{ $t('str.applet.type.h5') }}
+                    </el-tag>
                     <el-tag size="small" type="warning" v-if="scope.row.type == 1">{{ $t('str.applet.type.app') }}
                     </el-tag>
                     <el-tag size="small" type="danger" v-if="scope.row.type == 2">{{ $t('str.applet.type.game') }}
@@ -90,6 +103,13 @@
                 <el-form-item label="VIP资格" prop="isNeedVIP">
                     <el-switch v-model="state.model.isNeedVIP"></el-switch>
                 </el-form-item>
+                <el-form-item label="状态" prop="status">
+                    <el-select v-model="state.model.status" :placeholder="$t('str.tips.selectHint')">
+                        <el-option v-for="item in state.selectData.appletStatus" :key="item.id" :label="item.value"
+                            :value="item.id">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
                 <el-form-item label="类型" prop="type">
                     <el-select v-model="state.model.type" :placeholder="$t('str.tips.selectHint')">
                         <el-option v-for="item in state.selectData.appletTypes" :key="item.id" :label="item.value"
@@ -139,10 +159,10 @@
 import { onMounted, reactive, getCurrentInstance } from "vue"
 import { Plus, Edit, Delete } from "@element-plus/icons-vue"
 import { useI18n } from "vue-i18n"
-import { addApplet, updateApplet, delApplet, applet } from "@/network/api/applet"
+import { addApplet, delApplet, delAppletList, updateApplet, applet } from "@/network/api/applet"
 import { addAttachment } from "@/network/api/attachment"
 import { formatDate } from "@/utils/vdate"
-import { wrapUrl } from "@/utils/vstr"
+import { wrapMediaUrl } from "@/utils/vstr"
 import { Data } from "@/utils/vdata"
 
 import { ElMessage } from "element-plus"
@@ -157,6 +177,8 @@ const state = reactive({
     page: 1,
     limit: 20,
 
+    selectList: [], // 多选集合
+
     isShowEditDialog: false,
     editTitle: "",
     model: {
@@ -165,6 +187,7 @@ const state = reactive({
         content: "",
         tips: "",
         isNeedVIP: false,
+        status: 0,
         type: 0,
         appId: "",
         cover: "",
@@ -184,6 +207,7 @@ const state = reactive({
         ],
     },
     selectData: {
+        appletStatus: Array(),
         appletTypes: Array(),
     },
 })
@@ -195,6 +219,7 @@ onMounted(() => {
  * 初始化数据
  */
 const initData = () => {
+    state.selectData.appletStatus = Data.selectData.appletStatus
     state.selectData.appletTypes = Data.selectData.appletTypes
     loadApplet()
 }
@@ -233,6 +258,28 @@ const delContent = async (value) => {
     loadApplet()
 }
 /**
+ * 批量删除
+ */
+const delMultiContent = async () => {
+    let ids = ""
+    state.selectList.forEach((post: any, index: Number) => {
+        if (index == 0) {
+            ids = post._id
+        } else {
+            ids = `${ids},${post._id}`
+        }
+    })
+    try {
+        const result = await delAppletList({ ids })
+    } catch (e) {
+        return
+    }
+    ElMessage.success(t("str.tips.delSuccess"))
+
+    // 重新拉取数据
+    loadApplet()
+}
+/**
  * 编辑
  */
 const editContent = (data) => {
@@ -242,6 +289,7 @@ const editContent = (data) => {
         content: data.content,
         tips: data.tips,
         isNeedVIP: data.isNeedVIP,
+        status: data.status,
         type: data.type,
         appId: data.appId,
         cover: data.cover?._id,
@@ -261,7 +309,7 @@ const loadApplet = async () => {
     state.loading = true
 
     // 组装参数
-    const params = { page: state.page - 1, limit: state.limit }
+    const params = { page: state.page - 1, limit: state.limit, status: -1 }
     try {
         const result = await applet(params)
         state.dataList = result.data.data
@@ -323,7 +371,12 @@ const uploadCover = () => {
  * 上传程序包
  */
 const uploadPackage = () => { }
-
+/**
+ * 选择集合改变
+ */
+const handleSelectionChange = (value) => {
+    state.selectList = value
+}
 /**
  * 重置内容编辑对话框
  */
@@ -335,6 +388,7 @@ const resetSave = () => {
         content: "",
         tips: "",
         isNeedVIP: false,
+        status: 0,
         type: 0,
         appId: "",
         cover: "",

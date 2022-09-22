@@ -156,7 +156,7 @@ const closeTheme = () => {
  * 固定头部开关
  */
 const onHeaderSwitch = () => {
-    proxy.vbus.emit("layoutHeightChange")
+    proxy.$vbus.emit("layoutHeightChange")
 
     onSaveThemeConfig()
 }
@@ -165,7 +165,7 @@ const onHeaderSwitch = () => {
  * 底部开关
  */
 const onFooterSwitch = () => {
-    proxy.vbus.emit("layoutHeightChange")
+    proxy.$vbus.emit("layoutHeightChange")
 
     onSaveThemeConfig()
 }
@@ -173,7 +173,7 @@ const onFooterSwitch = () => {
  * 显示 Logo 开关
  */
 const onShowLogoSwitch = () => {
-    proxy.vbus.emit("layoutHeightChange")
+    proxy.$vbus.emit("layoutHeightChange")
 
     onSaveThemeConfig()
 }
@@ -244,13 +244,13 @@ onBeforeMount(() => {
     // 初始化主题
     initTheme()
     // 监听 theme 配置变化
-    proxy.vbus.on("openTheme", openTheme)
+    proxy.$vbus.on("openTheme", openTheme)
 })
 /**
  * 页面卸载时
  */
 onBeforeUnmount(() => {
-    proxy.vbus.off("openTheme", openTheme)
+    proxy.$vbus.off("openTheme", openTheme)
 })
 </script>
 

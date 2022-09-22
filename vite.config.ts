@@ -4,13 +4,11 @@ import { resolve } from "path"
 import pluginVue from "@vitejs/plugin-vue"
 // html插件
 import { createHtmlPlugin } from "vite-plugin-html"
+
 // ElementPlus 自动按需加载插件
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-
-import { env } from "process"
-
 
 /**
  * Vite 配置参考 https://vitejs.dev/config/
@@ -73,16 +71,19 @@ export default ({ mode }) => {
             vuePlugin,
             htmlPlugin,
             AutoImport({
+                // 自动导入 Element Plus 相关函数，如：ElMessage, ElMessageBox... (带样式)
                 resolvers: [ElementPlusResolver()],
             }),
             Components({
+                // 自动导入 ElementPlus 与 图标 组件
                 resolvers: [ElementPlusResolver()],
             }),
         ],
+
         resolve: {
             alias: { // 路径别名
                 "@": resolve(__dirname, "src"),
-                'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
+                // 'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
             },
             extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json"] // 导入时想要省略的扩展名列表
         },

@@ -3,6 +3,8 @@
         <div class="top-control">
             <!-- 新增 -->
             <el-button type="primary" :icon="Plus" round @click="addContent">{{ $t("str.btn.add") }}</el-button>
+            <el-button type="danger" :icon="Delete" round @click="delMultiContent">{{ $t("str.btn.deleteMulti") }}
+            </el-button>
             <div class="flex-auto"></div>
             <!-- 分页导航 -->
             <div v-if="state.dataList && state.dataList.length">
@@ -11,7 +13,9 @@
                 </el-pagination>
             </div>
         </div>
-        <el-table class="mt16" :data="state.dataList" :border="true" stripe empty-text="暂无数据">
+        <el-table class="mt16" :data="state.dataList" :border="true" stripe empty-text="暂无数据"
+            @selection-change="handleSelectionChange">
+            <el-table-column label="" prop="" type="selection" width="44" />
             <el-table-column label="身份级别" min-width="96">
                 <template #default="scope">
                     <el-tag>{{ scope.row.identity }}</el-tag>
@@ -72,7 +76,7 @@
 import { getCurrentInstance, onMounted, reactive } from "vue"
 import { Plus, Edit, Delete } from "@element-plus/icons-vue"
 import { useI18n } from "vue-i18n"
-import { addRole, updateRole, delRole, role } from "@/network/api/role"
+import { addRole, delRole, delRoleList, updateRole, role } from "@/network/api/role"
 import { useStore } from "@/store/index"
 import { formatDate } from "@/utils/vdate"
 
@@ -87,6 +91,8 @@ const state = reactive({
     total: 0,
     page: 1,
     limit: 100,
+
+    selectList: [], // 多选集合
 
     isShowEditDialog: false,
     editTitle: "",
@@ -143,6 +149,28 @@ const addContent = () => {
 const delContent = async (value) => {
     try {
         const result = await delRole(value._id)
+    } catch (e) {
+        return
+    }
+    ElMessage.success(t("str.tips.delSuccess"))
+
+    // 重新拉取数据
+    loadRole()
+}
+/**
+ * 批量删除
+ */
+const delMultiContent = async () => {
+    let ids = ""
+    state.selectList.forEach((post: any, index: Number) => {
+        if (index == 0) {
+            ids = post._id
+        } else {
+            ids = `${ids},${post._id}`
+        }
+    })
+    try {
+        const result = await delRoleList({ ids })
     } catch (e) {
         return
     }
@@ -222,6 +250,12 @@ const submitSave = async () => {
 
     // 重新拉取数据
     loadRole()
+}
+/**
+ * 选择集合改变
+ */
+const handleSelectionChange = (value) => {
+    state.selectList = value
 }
 /**
  * 重置内容编辑对话框

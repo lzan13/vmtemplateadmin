@@ -27,6 +27,18 @@ export function delRoom(id: string) {
     });
 }
 /**
+ *  批量删除
+ * @param params 要传的参数值
+ * @returns 返回接口数据
+ */
+export function delRoomList(params: object) {
+    return request({
+        method: "delete",
+        params,
+        url: `/api/v1/room`,
+    });
+}
+/**
  *  更新房间信息
  * @param params 要传的参数值
  * @returns 返回接口数据

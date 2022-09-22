@@ -37,7 +37,7 @@
         <!-- 头像 -->
         <el-dropdown :show-timeout="70" :hide-timeout="50" @command="onHandleCommandClick">
             <span class="control-info">
-                <el-image class="control-info-avatar ml16 mr16" :src="wrapUrl(state.user.avatar) + '!vt64'"
+                <el-image class="control-info-avatar ml16 mr16" :src="wrapMediaUrl(state.user.avatar) + '!vt64'"
                     v-if="state.user.avatar"></el-image>
                 <img src="@/assets/images/img-default-avatar.png" class="control-info-avatar ml16 mr16" v-else />
             </span>
@@ -74,7 +74,7 @@ import { resetRoute } from "@/router/index"
 import { useStore } from "@/store/index"
 import { useTitle } from "@/utils/vweb"
 import { Session, Local } from "@/utils/vstorage"
-import { wrapUrl } from "@/utils/vstr"
+import { wrapMediaUrl } from "@/utils/vstr"
 import { signOut } from "@/network/api/sign"
 
 import { ElMessageBox, ElMessage } from "element-plus"
@@ -152,7 +152,7 @@ const onLanguageChange = (lang: string) => {
     Local.set("theme", store.state.infos.theme)
     proxy.$i18n.locale = lang
 
-    proxy.vbus.emit("onLanguageChange")
+    proxy.$vbus.emit("onLanguageChange")
 
     initI18n()
     title()
@@ -161,7 +161,7 @@ const onLanguageChange = (lang: string) => {
  * 打开主题设置
  */
 const openTheme = () => {
-    proxy.vbus.emit("openTheme", true)
+    proxy.$vbus.emit("openTheme", true)
 }
 
 /**

@@ -60,6 +60,10 @@ export const Data = {
     },
     // 选择数据
     selectData: {
+        appletStatus: [
+            { id: 0, value: i18n.global.t("str.applet.status.wait") },
+            { id: 1, value: i18n.global.t("str.applet.status.sale") },
+        ],
         appletTypes: [
             { id: 0, value: i18n.global.t("str.applet.type.h5") },
             { id: 1, value: i18n.global.t("str.applet.type.app") },

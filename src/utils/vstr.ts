@@ -1,8 +1,13 @@
+const imgSuffixArr = [".gif", ".jpg", ".jpeg", ".png"]
 /**
  * 包装资源路径
  */
-export function wrapUrl(path: string) {
+export function wrapMediaUrl(path: string) {
     if (!path) return "";
+
+    const suffix = path.slice(path.lastIndexOf("."))
+    if (imgSuffixArr.indexOf(suffix) === -1) return ""
+
     if (path.indexOf("http") != -1) {
         return path;
     } else {

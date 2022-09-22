@@ -27,6 +27,18 @@ export function delRelation(id: string) {
     });
 }
 /**
+ *  批量删除
+ * @param params 要传的参数值
+ * @returns 返回接口数据
+ */
+export function delRelationList(params: object) {
+    return request({
+        method: "delete",
+        params,
+        url: `/api/v1/relation`,
+    });
+}
+/**
  *  更新关注信息
  * @param params 要传的参数值
  * @returns 返回接口数据

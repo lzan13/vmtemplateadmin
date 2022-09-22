@@ -62,13 +62,13 @@ const changeHeight = () => {
 onBeforeMount(() => {
     setupFilterRoutes()
     // 监听路由变化
-    proxy.vbus.on("routesChange", setupFilterRoutes)
+    proxy.$vbus.on("routesChange", setupFilterRoutes)
     // 监听 theme 配置文件的变化，更新菜单 el-scrollbar 的高度
-    proxy.vbus.on("layoutHeightChange", changeHeight)
+    proxy.$vbus.on("layoutHeightChange", changeHeight)
 })
 // 页面卸载前
 onBeforeUnmount(() => {
-    proxy.vbus.off("routesChange", setupFilterRoutes)
-    proxy.vbus.off("layoutHeightChange", changeHeight)
+    proxy.$vbus.off("routesChange", setupFilterRoutes)
+    proxy.$vbus.off("layoutHeightChange", changeHeight)
 })
 </script>

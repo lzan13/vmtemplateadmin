@@ -5,9 +5,10 @@
             <el-row>
                 <el-col class="infos" :xs="24" :sm="18">
                     <div class="infos-left">
-                        <el-image class="infos-left-avatar" :src="wrapUrl(state.user.avatar) + '!vt192'"
-                            v-if="wrapUrl(state.user.avatar) != ''" :preview-src-list="[wrapUrl(state.user.avatar)]"
-                            :hide-on-click-modal="true"></el-image>
+                        <el-image class="infos-left-avatar" :src="wrapMediaUrl(state.user.avatar) + '!vt192'"
+                            v-if="wrapMediaUrl(state.user.avatar) != ''"
+                            :preview-src-list="[wrapMediaUrl(state.user.avatar)]" :hide-on-click-modal="true">
+                        </el-image>
                         <img class="infos-left-avatar" src="@/assets/images/img-default-avatar.png" v-else />
                     </div>
                     <div class="infos-right">
@@ -97,7 +98,7 @@
                             <el-button class="update-password-code-btn" :round="true" type="primary"
                                 @click="onRequestCode" :loading="state.codeLoading" :disabled="state.codeWait">
                                 {{ state.codeWait ? `${state.waitTime} ${$t("str.tips.codeWait")}` :
-                                        $t("str.btn.codeBtn")
+                                $t("str.btn.codeBtn")
                                 }}
                             </el-button>
                         </el-form-item>
@@ -126,7 +127,7 @@ import { useStore } from "@/store/index"
 import { Data, wrapGender } from "@/utils/vdata"
 import { formatAxis } from "@/utils/vdate"
 import { Session } from "@/utils/vstorage"
-import { wrapUrl } from "@/utils/vstr"
+import { wrapMediaUrl } from "@/utils/vstr"
 
 import { sendCodeEmail, updateInfo, updatePassword } from "@/network/api/sign"
 

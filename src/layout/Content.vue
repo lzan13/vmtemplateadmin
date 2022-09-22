@@ -46,11 +46,11 @@ const refreshTag = (name: string): void => {
 // 页面加载前，处理缓存，页面刷新时路由缓存处理
 onBeforeMount(() => {
     state.keepAliveNames = getKeepAliveNames.value
-    proxy.vbus.on("refreshCurrentTag", refreshTag)
+    proxy.$vbus.on("refreshCurrentTag", refreshTag)
 })
 // 页面卸载之前
 onBeforeUnmount(() => {
-    proxy.vbus.off("refreshCurrentTag", refreshTag)
+    proxy.$vbus.off("refreshCurrentTag", refreshTag)
 })
 // 监听路由变化，防止 tagsView 多标签时，切换动画消失
 watch(
@@ -61,4 +61,5 @@ watch(
 )
 </script>
 <style lang="scss" scoped>
+
 </style>

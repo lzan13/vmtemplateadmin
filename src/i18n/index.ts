@@ -1,12 +1,8 @@
 /**
- * 国际化导出
+ * 国际化配置
  */
 
 import { createI18n } from "vue-i18n";
-// element-plus 框架的国家化资源
-import enLocale from "element-plus/lib/locale/lang/en";
-import zhcnLocale from "element-plus/lib/locale/lang/zh-cn";
-
 import { store } from "@/store/index";
 
 /**
@@ -30,15 +26,13 @@ import pageSignZHCN from "./pages/zh-cn";
  * 说明：
  */
 const messages = {
-    [enLocale.name]: {
-        ...enLocale,
+    'en': {
         str: {
             ...commonEN,
             ...pageSignEN,
         },
     },
-    [zhcnLocale.name]: {
-        ...zhcnLocale,
+    'zh-cn': {
         str: {
             ...commonZHCN,
             ...pageSignZHCN,
@@ -46,9 +40,23 @@ const messages = {
     },
 };
 
-// 导出语言国际化
+/**导出语言国际化 */
 export const i18n = createI18n({
-    locale: store.state.infos.theme.language,
-    fallbackLocale: zhcnLocale.name,
+    legacy: false, // composition API
+    globalInjection: true, //全局生效$t
+    locale: store.state.infos.theme.language, // 默认语言
+    fallbackLocale: store.state.infos.theme.language,
     messages,
 });
+
+// /**装载国际化配置 */
+// export function setupI18n(app) {
+//     const i18n = createI18n({
+//         legacy: false, // composition API
+//         globalInjection: true, //全局生效$t
+//         locale: store.state.infos.theme.language, // 默认语言
+//         fallbackLocale: zhcnLocale.name,
+//         messages,
+//     });
+//     app.use(i18n)
+// }

@@ -50,11 +50,11 @@ const updateHeight = () => {
 onBeforeMount(() => {
     setupSpace()
     // 监听 theme 配置变化引起的界面高度变化
-    proxy.vbus.on("layoutHeightChange", updateHeight)
+    proxy.$vbus.on("layoutHeightChange", updateHeight)
 })
 // 页面销毁前
 onBeforeUnmount(() => {
-    proxy.vbus.off("layoutHeightChange", updateHeight)
+    proxy.$vbus.off("layoutHeightChange", updateHeight)
 })
 // 监听路由的变化
 watch(

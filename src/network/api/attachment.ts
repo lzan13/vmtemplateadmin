@@ -27,6 +27,18 @@ export function delAttachment(id: string) {
     });
 }
 /**
+ *  批量删除
+ * @param params 要传的参数值
+ * @returns 返回接口数据
+ */
+export function delAttachmentList(params: object) {
+    return request({
+        method: "delete",
+        url: `/api/v1/attachment`,
+        params,
+    });
+}
+/**
  *  更新附件信息
  * @param params 要传的参数值
  * @returns 返回接口数据
